@@ -62,8 +62,7 @@ const StartChatView = () => {
                 Josh Bot
               </h1>
               <p className="text-zinc-500 font-medium max-w-md mx-auto text-sm md:text-base leading-relaxed">
-                Your technical partner for AI implementation and SaaS
-                architecture. Ask a question or start a blank session.
+                Ask about AI, scaling a SaaS business, or just say hi! Choose a question or start a blank session.
               </p>
             </div>
           </div>

@@ -83,7 +83,7 @@ const ChatView = ({ initialPrompt, onBack }: ChatViewProps) => {
                 <span className="flex h-1.5 w-1.5 rounded-full bg-black" />
               </h1>
               <p className="text-xs text-zinc-500 font-medium tracking-wide">
-                AI & SaaS Architecture
+                AI & SaaS Help
               </p>
             </div>
           </div>
@@ -103,8 +103,7 @@ const ChatView = ({ initialPrompt, onBack }: ChatViewProps) => {
                 Josh Bot
               </h2>
               <p className="text-zinc-500 max-w-md text-sm leading-relaxed">
-                I am your technical partner. Ask me about AI implementation,
-                SaaS architecture, or anything else on your mind.
+                Ask me about AI, starting a SaaS business, or anything else on your mind.
               </p>
             </div>
           )}
