@@ -7,8 +7,8 @@ const inter = Inter({
   subsets: ["latin"],
 });
 export const metadata: Metadata = {
-  title: "Turbo | SS&C's AI Assistant",
-  description: "Ask questions about EMS, get help with tasks, and make your workday easier with Turbo, SS&C's AI assistant.",
+  title: "Josh Bot | AI & SaaS Assistant",
+  description: "Your technical partner for AI implementation and SaaS architecture. Ask a question or start a blank session.",
 };
 
 export default function RootLayout({

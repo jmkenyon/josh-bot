@@ -1,6 +1,5 @@
-import { SUPPORT_AGENT_PROMPT } from "@/lib/constants";
-import openaiclient from "@/lib/openai";
-import { supabase } from "@/lib/supabase";
+import { JOSH_BOT_PROMPT } from "@/lib/constants";
+
 import { streamText, UIMessage, convertToModelMessages } from "ai";
 import { openai } from "@ai-sdk/openai";
 
@@ -26,47 +25,11 @@ export async function POST(req: Request) {
       });
     }
 
-    const embeddingResponse = await openaiclient.embeddings.create({
-      model: "text-embedding-3-small",
-      input: message,
-    });
-
-    const queryEmbedding = embeddingResponse.data[0].embedding;
-
-    const { data, error } = await supabase.rpc("match_documents", {
-      query_embedding: queryEmbedding,
-      match_threshold: 0.5,
-      match_count: 5,
-    });
-
-    if (error) {
-      return new Response(
-        JSON.stringify({ error: "Failed to retrieve knowledge base context" }),
-        { status: 500 }
-      );
-    }
-
-    const retrievedDocs =
-      data?.map((item: { content: string }) => item.content).join("\n---\n") ??
-      "";
-
-    const systemPrompt = `
-    ${SUPPORT_AGENT_PROMPT}
-    
-    Use the following knowledge base context to answer:
-    
-    ${retrievedDocs}
-    `;
-
     const result = await streamText({
-      model: openai("gpt-5-nano"),
-      messages: await convertToModelMessages([
-        {
-          role: "system",
-          parts: [{ type: "text", text: systemPrompt }],
-        },
-        ...messages.slice(-8),
-      ]),
+      model: openai(process.env.AI_MODEL ?? "gpt-4.1-mini"),
+      system: JOSH_BOT_PROMPT,
+      messages: await convertToModelMessages(messages.slice(-8)),
+      temperature: 0.7,
     });
 
     return result.toUIMessageStreamResponse();
