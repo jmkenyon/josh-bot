@@ -63,7 +63,7 @@ const ChatView = ({ initialPrompt, onBack }: ChatViewProps) => {
         <div className="flex items-center gap-4">
           <button 
             onClick={onBack}
-            className="p-2 hover:bg-zinc-100 rounded-full transition-colors text-zinc-500 hover:text-black"
+            className="p-2 hover:bg-zinc-100 rounded-full transition-colors text-zinc-500 hover:text-black cursor-pointer"
           >
             <ArrowLeft className="h-5 w-5" />
           </button>
