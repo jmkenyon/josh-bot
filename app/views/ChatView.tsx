@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import {  User, Send, Loader2, ArrowLeft, Bot } from "lucide-react";
+import { User, Send, Loader2, ArrowLeft, Bot } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useChat } from "@ai-sdk/react";
@@ -57,26 +57,25 @@ const ChatView = ({ initialPrompt, onBack }: ChatViewProps) => {
 
   return (
     <div className="flex flex-col h-screen bg-white font-sans selection:bg-zinc-200">
-      
       {/* Header */}
       <header className="flex-none bg-white/80 backdrop-blur-md border-b border-zinc-100 sticky top-0 z-10 px-4 sm:px-6 py-4 flex items-center justify-between shadow-sm">
         <div className="flex items-center gap-4">
-          <button 
+          <button
             onClick={onBack}
             className="p-2 hover:bg-zinc-100 rounded-full transition-colors text-zinc-500 hover:text-black cursor-pointer"
           >
-            <ArrowLeft className="h-5 w-5" />
+            <ArrowLeft className="h-5 w-5  cursor-pointer" />
           </button>
-          
+
           <div className="flex items-center gap-3">
             <div className="relative w-10 h-10 bg-white border border-zinc-200 rounded-full overflow-hidden shadow-sm shrink-0">
-               <Image
-                  src="/avatar.png"
-                  alt="Josh"
-                  fill
-                  sizes="40px"
-                  className="object-cover"
-                />
+              <Image
+                src="/avatar.png"
+                alt="Josh"
+                fill
+                sizes="40px"
+                className="object-cover"
+              />
             </div>
             <div>
               <h1 className="font-bold text-black tracking-tight flex items-center gap-2">
@@ -94,7 +93,6 @@ const ChatView = ({ initialPrompt, onBack }: ChatViewProps) => {
       {/* Chat Area */}
       <main className="flex-1 overflow-y-auto p-4 sm:p-6 scroll-smooth">
         <div className="max-w-3xl mx-auto space-y-8">
-          
           {/* Empty State */}
           {messages.length === 0 && !initialPrompt && (
             <div className="flex flex-col items-center justify-center h-[50vh] text-center animate-in fade-in zoom-in-95 duration-700">
@@ -105,7 +103,8 @@ const ChatView = ({ initialPrompt, onBack }: ChatViewProps) => {
                 Josh Bot
               </h2>
               <p className="text-zinc-500 max-w-md text-sm leading-relaxed">
-                I am your technical partner. Ask me about AI implementation, SaaS architecture, or anything else on your mind.
+                I am your technical partner. Ask me about AI implementation,
+                SaaS architecture, or anything else on your mind.
               </p>
             </div>
           )}
@@ -157,7 +156,10 @@ const ChatView = ({ initialPrompt, onBack }: ChatViewProps) => {
                     {msg.parts?.map((part, i) => {
                       if (part.type === "text") {
                         return (
-                          <div key={`${msg.id}-${i}`} className="prose prose-sm prose-zinc max-w-none dark:prose-invert">
+                          <div
+                            key={`${msg.id}-${i}`}
+                            className="prose prose-sm prose-zinc max-w-none dark:prose-invert"
+                          >
                             <ReactMarkdown remarkPlugins={[remarkGfm]}>
                               {part.text}
                             </ReactMarkdown>
@@ -176,13 +178,13 @@ const ChatView = ({ initialPrompt, onBack }: ChatViewProps) => {
             <div className="flex w-full justify-start animate-in fade-in">
               <div className="flex gap-3">
                 <div className="relative w-8 h-8 bg-white border border-zinc-200 rounded-full overflow-hidden shadow-sm shrink-0">
-                   <Image
-                      src="/avatar.png"
-                      alt="Josh"
-                      fill
-                      sizes="32px"
-                      className="object-cover"
-                    />
+                  <Image
+                    src="/avatar.png"
+                    alt="Josh"
+                    fill
+                    sizes="32px"
+                    className="object-cover"
+                  />
                 </div>
                 <div className="px-5 py-4 bg-white border border-zinc-200 rounded-2xl rounded-tl-sm flex items-center gap-1.5 shadow-sm">
                   <span className="h-1.5 w-1.5 bg-zinc-400 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
