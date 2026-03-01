@@ -13,9 +13,9 @@ const StartChatView = () => {
   // Simplified array since we just need the prompts for the pills
   const suggestedPrompts = [
     "How do I market my SaaS with zero ad spend?",
-    "Explain how LLM search works under the hood.",
-    "Which AI model is best for my specific project?",
-    "How can I integrate AI into my React apps?",
+    "What business can I start?",
+    "How do I start learning about AI?",
+    "What are some good AI project ideas for beginners?",
   ];
 
   const handleStartSession = (prompt = "") => {
